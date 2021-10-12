@@ -1,0 +1,134 @@
+//変数
+$textColor: #333333;
+$enTitleColor: #3BA6C9;
+$transition: all .3s ease-in-out;
+
+
+// レイアウト幅
+$layout-width-inner: 1100px;
+
+// ブレークポイント
+$breakpoints: (
+"sp": "screen and (max-width: 414px)",
+"spm": "screen and (max-width: 768px)",
+"tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+"pc": "screen and (min-width: #{$layout-width-inner})",
+);
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// フォントサイズの計算を簡単にする
+$baseFontSize: 16;
+  @function rem($pixels) {
+    @return $pixels / $baseFontSize * 1rem;
+  }
+// すべての要素にborder-boxを適用
+*, *:before, *:after {
+  box-sizing: border-box
+}
+
+body {
+    background-color: #fff; // ユーザーがブラウザの背景色を独自設定していた場合に、色によっては正常に閲覧できなくなることがあるので
+    // Google fontのスタイル
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: rem(16);
+    color: $textColor;
+    @include mq('spm') {
+      font-size: rem(14);
+    }
+}
+
+// 指定しておかないと画像の下に微妙な隙間ができてしまうことがある
+img,svg {
+    vertical-align: bottom;
+    width: 100%;
+}
+
+p {
+  line-break: strict;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $textColor;
+}
+
+li {
+  list-style: none;
+}
+
+.section-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 55px 15px 93px 15px;
+  @include mq('spm') {
+    padding: 55px 15px 30px 15px;
+  }
+}
+
+.flex-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  width: 155px;
+  height: 37px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: rem(14);
+  line-height: 37px;
+  color: #fff;
+  background: linear-gradient(90deg, #FA41CC, #6020B0);
+  &:hover {
+    opacity: .7;
+    transition: $transition;
+  }
+}
+
+input[type="submit"]{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-title-wrapper {
+  text-transform: uppercase;
+  text-align: center;
+  .section-title {
+    font-size: rem(32);
+    line-height: calc(46 / 32);
+    & br {
+      display: none;
+      @include mq('sp') {
+        display: block;
+      }
+    }
+    @include mq('spm') {
+      font-size: rem(28);
+    }
+  }
+  .section-title-en {
+    padding-top: 18px;
+    color: #3BA6C9;
+  }
+}

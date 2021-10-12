@@ -1,0 +1,38 @@
+.footer {
+  text-align: center;
+  background-color: #F8F8F8;
+  height: 244px;
+  .footer-title {
+    font-size: rem(24);
+    padding-top:30px;
+    padding-bottom: 21px;
+    @include mq('spm') {
+      font-size: rem(20);
+    }
+  }
+  ul {
+    width: 381px;
+    margin: 0 auto;
+    @include mq('spm') {
+      width: 100%;
+      display: block;
+      li {
+        &:first-child {
+          padding-bottom: 15px;
+        }
+      }
+    }
+    li {
+      a {
+        color: $textColor;
+        font-weight: bold;
+      }
+    }
+  }
+  small {
+    display: inline-block;
+    font-size: rem(14);
+    font-weight: normal;
+    padding-top: 54px;
+  }
+}
