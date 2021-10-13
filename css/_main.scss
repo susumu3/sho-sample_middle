@@ -53,6 +53,7 @@
       .kv-lead {
         margin: 45px 0;
         line-height: 1.5;
+        font-weight: bold;
         line-break: strict;
         br {
           @include mq('sp') {

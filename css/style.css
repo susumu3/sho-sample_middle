@@ -506,6 +506,7 @@ input[type=submit] {
 .fv .kv-wrapper .kv-main-wrapper .kv-lead {
   margin: 45px 0;
   line-height: 1.5;
+  font-weight: bold;
   line-break: strict;
 }
 @media screen and (max-width: 414px) {
